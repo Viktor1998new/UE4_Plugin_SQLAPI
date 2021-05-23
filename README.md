@@ -1,3 +1,3 @@
 # UE4_SQLAPI
 
-https://github.com/Viktor1998new/UE4_SQLAPI/blob/main/Screenshot/Screenshot_1.png
+https://raw.githubusercontent.com/Viktor1998new/UE4_SQLAPI/main/Screenshot/Screenshot_1.png
