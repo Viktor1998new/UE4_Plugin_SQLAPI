@@ -11,10 +11,10 @@
 #Installation
 
 copy DLL files from ThirdParty\SQLAPI\lib /n
-  -sqlapi.dll /n
-  -sqlapid.dll /n
-  -sqlapiu.dll /n
-  -sqlapiud.dll /n
+  -sqlapi.dll  <br/>
+  -sqlapid.dll  <br/>
+  -sqlapiu.dll  <br/>
+  -sqlapiud.dll  <br/>
 also need a SQL client DLL, MySQL has libmysql.dll
 to the NameProject\Binaries\Win64
 
