@@ -13,11 +13,11 @@
 # Installation
 
 copy DLL files from ThirdParty\SQLAPI\lib <br/>
-  -sqlapi.dll  <br/>
-  -sqlapid.dll  <br/>
-  -sqlapiu.dll  <br/>
-  -sqlapiud.dll  <br/>
-also need a SQL client DLL, MySQL has libmysql.dll <br/>
+  -sqlapi.dll<br/>
+  -sqlapid.dll<br/>
+  -sqlapiu.dll<br/>
+  -sqlapiud.dll<br/>
+  -a client SQL DLL is also required. For example MySQL has "libmysql.dll" <br/>
 to the NameProject\Binaries\Win64
 
-(in the build of the game, also copy all the DLL files from the list, including the SQL client)
+(into the assembly of the game, also copy all DLL files from the list, including the SQL client)
