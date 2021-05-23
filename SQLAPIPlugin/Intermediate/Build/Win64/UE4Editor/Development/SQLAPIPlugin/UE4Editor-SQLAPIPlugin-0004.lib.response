@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-SQLAPIPlugin-0004.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Project\MyProject\Intermediate\Build\Win64\MyProjectEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"D:\Project\MyProject\Plugins\SQLAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\SQLAPIPlugin\Module.SQLAPIPlugin.cpp.obj"
+"D:\Project\MyProject\Plugins\SQLAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\SQLAPIPlugin\Module.SQLAPIPlugin.gen.cpp.obj"
+"D:\Project\MyProject\Plugins\SQLAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\SQLAPIPlugin\Default.rc2.res"
+/OUT:"D:\Project\MyProject\Plugins\SQLAPIPlugin\Intermediate\Build\Win64\UE4Editor\Development\SQLAPIPlugin\UE4Editor-SQLAPIPlugin-0004.lib"
+/INCLUDE:IMPLEMENT_MODULE_SQLAPIPlugin

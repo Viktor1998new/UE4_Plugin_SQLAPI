@@ -1,0 +1,15 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.SQLAPIPlugin.cpp.obj": [
+			"SendSQLCommand.cpp.obj",
+			"SQLAPIPlugin.cpp.obj",
+			"SQLObject.cpp.obj"
+		],
+		"Module.SQLAPIPlugin.gen.cpp.obj": [
+			"SendSQLCommand.gen.cpp.obj",
+			"SQLAPIPlugin.init.gen.cpp.obj",
+			"SQLObject.gen.cpp.obj"
+		]
+	}
+}
