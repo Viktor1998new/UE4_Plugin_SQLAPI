@@ -13,7 +13,7 @@
 
 # Setting
 
-![](https://raw.githubusercontent.com/Viktor1998new/UE4_SQLAPI/main/Screenshot/Screenshot_2.png)
+![](https://raw.githubusercontent.com/Viktor1998new/UE4_SQLAPI/main/Screenshot/Screenshot_6.png)
 
 # Installation
 
