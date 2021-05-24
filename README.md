@@ -1,5 +1,4 @@
-# UE4_SQLAPI (4.26)
-vs 2019
+# UE4_SQLAPI (4.26) vs 2019
 
 # Usage example
 
