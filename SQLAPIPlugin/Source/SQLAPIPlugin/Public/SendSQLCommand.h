@@ -17,6 +17,7 @@ public:
 		TMap<FString, FString> Raws;
 };
 
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FCompletedPin, bool, Success, const TArray<FSQLTable>&, Tables, const FString&, msError);
 
 UCLASS()
@@ -38,8 +39,6 @@ public:
 	FString ConverterSaString(SAString Value);
 
 private:
-
-	FString SQLIPAddress;
 
 	FString SQLBDName;
 
