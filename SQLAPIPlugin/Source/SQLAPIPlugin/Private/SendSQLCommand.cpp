@@ -6,7 +6,8 @@
 #include "SendSQLCommand.h"
 
 USendSQLCommand::USendSQLCommand(const FObjectInitializer& ObjectInitializer) :
-    Super(ObjectInitializer), SQLQuery(TEXT("")) {
+    Super(ObjectInitializer)
+{
 }
 
 void USendSQLCommand::Activate() {
@@ -18,7 +19,7 @@ void USendSQLCommand::Activate() {
 
 
         SAClient_t Client = (SAClient_t)SQLObject->SQLClient.GetValue();
-        std::string L_SQLIAddress = std::string(TCHAR_TO_UTF8(*FString::Printf(TEXT("%s@%s"), *SQLIPAddress, *SQLBDName)));
+        std::string L_SQLIAddress = std::string(TCHAR_TO_UTF8(*SQLBDName));
         std::string L_SQLUser = std::string(TCHAR_TO_UTF8(*SQLUser));
         std::string L_SQLIPassword = std::string(TCHAR_TO_UTF8(*SQLPassword));
         
@@ -75,18 +76,17 @@ void USendSQLCommand::Activate() {
     catch (SAException& x)
     {
         UE_LOG(LogSQLAPI, Error, TEXT("Error SQL: %s"),*ConverterSaString(x.ErrText()));
-        Completed.Broadcast(false, TArray<FSQLTable>(), FString());
+        Completed.Broadcast(false, TArray<FSQLTable>(), *ConverterSaString(x.ErrText()));
     }
 }
 
 USendSQLCommand* USendSQLCommand::SendSQLCommand(const FString IPAddress, const FString BDName, const FString User, const FString Password, const FString Query)
 {
     USendSQLCommand* BlueprintNode = NewObject<USendSQLCommand>();
-    BlueprintNode->SQLIPAddress = IPAddress;
-    BlueprintNode->SQLQuery = Query;
-    BlueprintNode->SQLBDName = BDName;
+    BlueprintNode->SQLBDName = FString::Printf(TEXT("%s@%s"), *IPAddress, *BDName);
     BlueprintNode->SQLUser = User;
     BlueprintNode->SQLPassword = Password;
+    BlueprintNode->SQLQuery = Query;
     return BlueprintNode;
 }
 
