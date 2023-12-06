@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SQLAPI",
+	"Description": "",
+	"EngineVersion": "4.27",
+	"Category": "Other",
+	"DocsURL" : "https://github.com/Viktor1998new/UE4_Plugin_SQLAPI/wiki",
+	"WhitelistPlatforms": [ "Win64", "Win32"],
+	"MarketplaceURL": "",
+	"EnabledByDefault": true,
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SQLAPIPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
