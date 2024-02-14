@@ -6,9 +6,7 @@
 
 FString ConverterSaString(SAString Value) {
 
-    const char* bytes = Value.GetMultiByteChars();
-    size_t n = strlen(bytes);
-    return FString(n, bytes);
+   return UTF8_TO_TCHAR(Value.GetMultiByteChars());
 }
 
 USQLQuery::USQLQuery(const FObjectInitializer& ObjectInitializer) :
