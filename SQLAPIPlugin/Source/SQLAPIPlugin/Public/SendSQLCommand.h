@@ -19,7 +19,6 @@ public:
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCompletedPin, const TArray<FSQLTable>&, Answer);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FSuccess);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFail, const FString&, MsError);
 
 UCLASS(EditInlineNew, BlueprintType)
@@ -40,6 +39,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "SQL")
 		void Disconnect() {
 			con.Disconnect();
+			ConditionalBeginDestroy();
 		}
 
 	UFUNCTION(BlueprintPure, Category = "SQL")
@@ -82,6 +82,8 @@ private:
 	
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSuccess, USQL*, SQL);
+
 UCLASS()
 class SQLAPIPLUGIN_API USQLConnect : public UBlueprintAsyncActionBase
 {
@@ -98,13 +100,11 @@ public:
 public:
 
 	UFUNCTION(BlueprintCallable, meta = (BlueprintInternalUseOnly = "true"), Category = "SQL")
-		static USQLConnect* SQLConnect(USQL* SQL,const FString IPAddress, const FString BDName, const FString User, const FString Password) {
+		static USQLConnect* SQLConnect(const FString IPAddress, const FString BDName, const FString User, const FString Password) {
 			USQLConnect* BlueprintNode = NewObject<USQLConnect>();
 			BlueprintNode->SQLBDName = FString::Printf(TEXT("%s@%s"), *IPAddress, *BDName);
 			BlueprintNode->SQLUser = User;
 			BlueprintNode->SQLPassword = Password;
-			SQL->SQLBDName = BlueprintNode->SQLBDName;
-			BlueprintNode->SQL = SQL;
 			return BlueprintNode;
 
 		};
@@ -117,6 +117,4 @@ private:
 	FString SQLUser;
 
 	FString SQLPassword;
-
-	USQL* SQL;
 };

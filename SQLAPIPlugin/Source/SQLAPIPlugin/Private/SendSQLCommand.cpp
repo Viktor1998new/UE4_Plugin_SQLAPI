@@ -3,7 +3,6 @@
 #include "SendSQLCommand.h"
 #include "SQLObject.h"
 #include "SQLAPIPlugin.h"
-#include <string>
 
 FString ConverterSaString(SAString Value) {
 
@@ -26,9 +25,9 @@ void USQLQuery::Activate() {
   
     try{
         
-        std::string L_SQLQuery = std::string(TCHAR_TO_UTF8(*Query));
+        char* L_SQLQuery = TCHAR_TO_UTF8(*Query);
 
-        SACommand insert(&SQL->con, _TSA(L_SQLQuery.c_str()));
+        SACommand insert(&SQL->con, _TSA(L_SQLQuery));
 
         insert.Execute();
         
@@ -76,31 +75,31 @@ void USQLQuery::Activate() {
 
 void USQLConnect::Activate()
 {
+
+    USQL* NewSQL = NewObject<USQL>();
+    NewSQL->SQLBDName = SQLBDName;
+
     USQLObject* SQLObject = FSQLAPIPluginModule::Get().ModuleSettings;
 
     try {
 
-        if (SQL->IsConnected())
-            SQL->Disconnect();
-
         SAClient_t Client = (SAClient_t)SQLObject->SQLClient.GetValue();
-        std::string L_SQLIAddress = std::string(TCHAR_TO_UTF8(*SQLBDName));
-        std::string L_SQLUser = std::string(TCHAR_TO_UTF8(*SQLUser));
-        std::string L_SQLIPassword = std::string(TCHAR_TO_UTF8(*SQLPassword));
+        char* L_SQLIAddress = TCHAR_TO_UTF8(*SQLBDName);
+        char* L_SQLUser = TCHAR_TO_UTF8(*SQLUser);
+        char* L_SQLIPassword = TCHAR_TO_UTF8(*SQLPassword);
 
-        SQL->con.Connect(_TSA(L_SQLIAddress.c_str()), _TSA(L_SQLUser.c_str()), _TSA(L_SQLIPassword.c_str()), Client);
+        NewSQL->con.Connect(_TSA(L_SQLIAddress), _TSA(L_SQLUser), _TSA(L_SQLIPassword), Client);
 
         do {
 
-        } while (SQL->con.isConnected() != true);
+        } while (NewSQL->con.isConnected() != true);
 
-        Success.Broadcast();
+        Success.Broadcast(NewSQL);
     }
     catch (SAException& x)
     {
         UE_LOG(LogSQLAPI, Error, TEXT("Error SQL: %s"), *ConverterSaString(x.ErrText()));
         OnFail.Broadcast(*ConverterSaString(x.ErrText()));
-        SQL->OnFail.Broadcast(*ConverterSaString(x.ErrText()));
     }
 
 }

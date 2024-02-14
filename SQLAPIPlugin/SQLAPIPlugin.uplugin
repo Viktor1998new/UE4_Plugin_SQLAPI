@@ -10,7 +10,7 @@
 	"WhitelistPlatforms": [ "Win64", "Win32"],
 	"MarketplaceURL": "",
 	"EnabledByDefault": true,
-	"CanContainContent": true,
+	"CanContainContent": false,
 	"IsBetaVersion": false,
 	"Installed": false,
 	"Modules": [
